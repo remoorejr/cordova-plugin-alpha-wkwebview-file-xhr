@@ -1,6 +1,9 @@
-# cordova-plugin-wkwebview-file-xhr 2.1.1
+# cordova-plugin-alpha-wkwebview-file-xhr 2.1.1
 
-## About the cordova-plugin-wkwebview-file-xhr
+## About the cordova-plugin-alpha-wkwebview-file-xhr
+
+This plugin is based on the cordova-plugin-wkwebview-file-xhr plugin and has been modofoed to work with the
+cordova-plugin-alpha-wkwebview which includes a custom URL handler for loading local media files.
 
 This plugin makes it possible to reap the performance benefits of using the WKWebView in your Cordova app by resolving the following issues:
 
@@ -10,10 +13,10 @@ This plugin makes it possible to reap the performance benefits of using the WKWe
 
 ## Installation
 
-Plugin installation requires Cordova 4+ and iOS 9+. It will install the Apache Cordova WKWebView plugin `cordova-plugin-wkwebview-engine`.
+Plugin installation requires Cordova 4+ and iOS 9+. It will install the plugin `cordova-plugin-alpha-wkwebview-engine` if it has not been previously loaded.
 
 ```
-cordova plugin add cordova-plugin-wkwebview-file-xhr
+cordova plugin add cordova-plugin-alpha-wkwebview-file-xhr
 ```
 
 ## Supported Platforms
