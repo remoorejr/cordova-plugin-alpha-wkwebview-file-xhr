@@ -28,9 +28,9 @@
     <name>Cordova Alpha WKWebView File XHR Plugin</name>
     <description>This plugin includes the Alpha Cordova WKWebView plugin and resolves XHR Cross-Origin Resource Sharing (CORS) constraints.</description>
     <license>UPL 1.0</license> 
-    <keywords>cordova,wkwebview,webview</keywords>
-    <repo>https://remoorejr:42a62(EUaBUfbv@github.com/remoorejr/cordova-plugin-alpha-wkwebview-engine.git</repo>
-    <dependency id="https://remoorejr:42a62(EUaBUfbv@github.com/remoorejr/cordova-plugin-alpha-wkwebview-engine.git" />
+    <keywords>cordova,wkwebview</keywords>
+    <repo>https://github.com/remoorejr/cordova-plugin-alpha-wkwebview-file-xhr.git</repo>
+    <dependency id="cordova-plugin-alpha-wkwebview-engine" url="https://github.com/remoorejr/cordova-plugin-alpha-wkwebview-engine" />
     <engines>
       <engine name="cordova-ios" version=">=4.0.0" />
       <engine name="apple-ios" version=">=9.0" />
