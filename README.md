@@ -2,7 +2,7 @@
 
 ## About the cordova-plugin-alpha-wkwebview-file-xhr
 
-This plugin is based on the cordova-plugin-wkwebview-file-xhr plugin and has been modofoed to work with the
+This plugin is based on the cordova-plugin-wkwebview-file-xhr plugin and has been modified to work with the
 cordova-plugin-alpha-wkwebview which includes a custom URL handler for loading local media files.
 
 This plugin makes it possible to reap the performance benefits of using the WKWebView in your Cordova app by resolving the following issues:
