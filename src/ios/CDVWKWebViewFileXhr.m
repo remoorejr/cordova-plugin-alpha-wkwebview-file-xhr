@@ -86,6 +86,7 @@ NS_ASSUME_NONNULL_BEGIN
     if (value != nil && 
         ([value compare:@"all" options:NSCaseInsensitiveSearch] == NSOrderedSame ||
          [value compare:@"secureOnly" options:NSCaseInsensitiveSearch] == NSOrderedSame ||
+         [value compare:@"httpOnly" options:NSCaseInsensitiveSearch] == NSOrderedSame ||
          [value compare:@"none" options:NSCaseInsensitiveSearch] == NSOrderedSame)) {
         _interceptRemoteRequests = value;
     } else {
@@ -103,7 +104,8 @@ NS_ASSUME_NONNULL_BEGIN
     
     WKWebView *wkWebView = (WKWebView *) self.webView;
     if ([_interceptRemoteRequests compare:@"all" options:NSCaseInsensitiveSearch] == NSOrderedSame ||
-        [_interceptRemoteRequests compare:@"secureOnly" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
+        [_interceptRemoteRequests compare:@"secureOnly" options:NSCaseInsensitiveSearch] == NSOrderedSame ||
+        [_interceptRemoteRequests compare:@"httpOnly" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
 
         NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
         [sessionConfiguration setRequestCachePolicy:NSURLRequestReloadIgnoringCacheData];
