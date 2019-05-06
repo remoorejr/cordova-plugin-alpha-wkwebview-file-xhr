@@ -898,7 +898,8 @@
         else
         {
           if ("all" === interceptRemoteRequests ||
-             ("secureOnly" === interceptRemoteRequests && context.url.startsWith("https://")))
+             ("secureOnly" === interceptRemoteRequests && context.url.startsWith("https://")) ||
+             ("httpOnly" === interceptRemoteRequests && context.url.startsWith("http://")))
             resolve(new HttpHandler(context, config));
           else
             resolve(new DelegateHandler(context, config));
@@ -1236,11 +1237,11 @@
    * Override plugin config settings per request instance for the "InterceptRemoteRequests"
    * config param.
    * 
-   * @param {string} value enumerations are: "all", "secureOnly", "none".
+   * @param {string} value enumerations are: "all", "secureOnly", "httpOnly", none".
    */
   window.XMLHttpRequest.prototype.__setInterceptRemoteRequests = function (value)
   {
-    if (["all", "secureOnly", "none"].indexOf(value) > -1)
+    if (["all", "secureOnly", "httpOnly", "none"].indexOf(value) > -1)
     {
       this._context.interceptRemoteRequests = value;
     }
