@@ -101,6 +101,15 @@ NS_ASSUME_NONNULL_BEGIN
     } else {
         _nativeXHRLogging = @"none";
     }
+
+    value = [self.commandDelegate.settings cdvwkStringForKey:@"nos3intercepts"];
+    if (value != nil &&
+        ([value compare:@"true" options:NSCaseInsensitiveSearch] == NSOrderedSame ||
+         [value compare:@"false" options:NSCaseInsensitiveSearch] == NSOrderedSame)) {
+        _noS3Intercepts = value;
+    } else {
+        _noS3Intercepts = @"false";
+    }
     
     WKWebView *wkWebView = (WKWebView *) self.webView;
     if ([_interceptRemoteRequests compare:@"all" options:NSCaseInsensitiveSearch] == NSOrderedSame ||
@@ -251,7 +260,8 @@ NS_ASSUME_NONNULL_BEGIN
     
     NSDictionary *dict = @{
                            @"InterceptRemoteRequests" : _interceptRemoteRequests,
-                           @"NativeXHRLogging" : _nativeXHRLogging
+                           @"NativeXHRLogging" : _nativeXHRLogging,
+                           @"NoS3Intercepts" : _noS3Intercepts
                           };
     
     [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:dict] callbackId:command.callbackId];

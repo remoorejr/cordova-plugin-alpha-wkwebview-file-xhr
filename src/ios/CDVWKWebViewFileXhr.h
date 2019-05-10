@@ -47,7 +47,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) BOOL  allowsInsecureLoads;
 @property (nonatomic, strong) NSString * interceptRemoteRequests;
-@property (nonatomic, assign) BOOL  noS3Intercepts;
+@property (nonatomic, assign) NSString * noS3Intercepts;
 
 
 
