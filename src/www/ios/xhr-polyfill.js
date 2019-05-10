@@ -889,7 +889,7 @@
       
         // look for s3.amazonaws.com signature, no redirect if applicable.
         // Alpha signs this URL and intercept will fail, CORS must be properly configured on S3 bucket.
-        if (noS3Intercepts && context.url.contains("s3.amazonaws.com") {
+        if (noS3Intercepts && context.url.contains("s3.amazonaws.com")) {
           context.interceptRemoteRequests = "none";
         }
 
