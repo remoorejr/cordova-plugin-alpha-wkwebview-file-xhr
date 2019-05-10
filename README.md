@@ -60,8 +60,9 @@ config.xml as preferences:
 
 <ul>
  <li>AllowUntrustedCerts: on|off (default: off).  If "on", requests routed to the native implementation will accept self signed SSL certificates. This preference should only be enabled for testing purposes.</li>
- <li>InterceptRemoteRequests: all|secureOnly|none (default: secureOnly). Controls what types of remote XHR requests are intercepted and handled by the plugin. The plugin always intercepts requests with the file:// protocol. By default, the plugin will intercept only secure protocol requests ("https").</li>
+ <li>InterceptRemoteRequests: all|secureOnly|httpOnly|none (default: secureOnly). Controls what types of remote XHR requests are intercepted and handled by the plugin. The plugin always intercepts requests with the file:// protocol. By default, the plugin will intercept only secure protocol requests ("https").</li>
  <li>NativeXHRLogging: none|full (default: none).  If "full" the javascript layer will produce logging of the XHR requests sent through the native to the javascript console.  Note:  natively routed XHR requests will not appear in the web inspector utility when "InterceptRemoteRequests" is "all" or "secureOnly".</li>
+ <li>NoS3Intercepts: true|false (default: false) If set true, any URL that includes "s3.amazonaws.com" will not be intercepted and handled by the plugin. Only valid if InterceptRemoteRequests is set to all, secureOnly or httpOnly.</li>
 </ul>
 
 ### Known Issues
