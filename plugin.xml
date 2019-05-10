@@ -24,7 +24,7 @@
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     id="cordova-plugin-alpha-wkwebview-file-xhr"
-    version="2.1.1">
+    version="2.1.2">
     <name>Cordova Alpha WKWebView File XHR Plugin</name>
     <description>This plugin includes the Alpha Cordova WKWebView plugin and resolves XHR Cross-Origin Resource Sharing (CORS) constraints.</description>
     <license>UPL 1.0</license> 
