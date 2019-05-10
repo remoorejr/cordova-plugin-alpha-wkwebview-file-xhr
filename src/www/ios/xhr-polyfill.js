@@ -885,7 +885,7 @@
       HandlerFactory._getConfig().then(function (config)
       {
         var interceptRemoteRequests = config["InterceptRemoteRequests"];
-        var noS3Intercepts = (config["noS3Intercepts"].toLowerCase() === 'true');
+        var noS3Intercepts = (config["NoS3Intercepts"].toLowerCase() === 'true');
       
         // look for s3.amazonaws.com signature, no redirect if applicable.
         // Alpha signs this URL and intercept will fail, CORS must be properly configured on S3 bucket.
