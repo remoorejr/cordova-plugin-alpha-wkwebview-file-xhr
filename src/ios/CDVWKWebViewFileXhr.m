@@ -30,6 +30,12 @@
  * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
  * CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
  * DEALINGS IN THE SOFTWARE.
+ *
+ * This version has been modified for optimized use with Alpha Anywhere.
+ * Modifications by: R.E. Moore Jr.
+ *
+ * Changes include option to intercept http and https urls and an exclusion option for S3 uploads.
+ * Cookies returned via Ajax XHR requests are also added to the WKWebView cookie store.
  */
 
 #import "CDVWKWebViewFileXhr.h"
@@ -356,6 +362,8 @@ NS_ASSUME_NONNULL_BEGIN
     __block NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     if (method.length)
         request.HTTPMethod = [method uppercaseString];
+
+    [request setHTTPShouldHandleCookies:YES];
     
     id val = [body objectForKey:@"timeout"];
     if ([val isKindOfClass:NSNumber.class]) {
@@ -386,16 +394,38 @@ NS_ASSUME_NONNULL_BEGIN
         }
         if (response != nil) {
             NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+
+            NSArray *availableCookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
+            NSDictionary *headersWithCookies = [NSHTTPCookie requestHeaderFieldsWithCookies:availableCookies];
+
             dictionary[@"expectedContentLength"] = @(response.expectedContentLength);
             dictionary[@"suggestedFileName"] = response.suggestedFilename;
             dictionary[@"mimeType"] = response.MIMEType;
             dictionary[@"url"] = response.URL.absoluteString;
             dictionary[@"textEncodingName"] = response.textEncodingName;
+
             if ([response isKindOfClass:NSHTTPURLResponse.class]) {
                 NSHTTPURLResponse* urlResponse = (NSHTTPURLResponse *) response;
-                dictionary[@"allHeaderFields"] = urlResponse.allHeaderFields;
+                dictionary[@"allHeaderFields"] = headersWithCookies;
                 dictionary[@"statusCode"] = @(urlResponse.statusCode);
-                dictionary[@"localizedStatusCode"] = [NSHTTPURLResponse localizedStringForStatusCode:urlResponse.statusCode];                    
+                dictionary[@"localizedStatusCode"] = [NSHTTPURLResponse localizedStringForStatusCode:urlResponse.statusCode];   
+
+                // sync cookies with WKWebView
+                for (NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]) {
+                    // uncomment for debug log
+                    // NSLog(@"cookie name   : '%@'\n", [cookie name]);
+                    // NSLog(@"cookie value  : '%@'\n", [cookie value]);
+                    // NSLog(@"cookie domain : '%@'\n", [cookie domain]);
+                    // NSLog(@"cookie path   : '%@'\n", [cookie path]);
+                    
+                    if (@available(iOS 11.0, *)) {
+                        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                            [webView.configuration.websiteDataStore.httpCookieStore setCookie:cookie completionHandler: ^(void){
+                                NSLog(@"Added cookie: '%@' to the WKWebView httpCookieStore\n", [cookie name]);
+                            }];
+                        }];
+                    }
+                }
             }
             
             result[@"response"] = dictionary;

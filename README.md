@@ -1,4 +1,4 @@
-# cordova-plugin-alpha-wkwebview-file-xhr 2.1.1
+# cordova-plugin-alpha-wkwebview-file-xhr 2.2.0
 
 ## About the cordova-plugin-alpha-wkwebview-file-xhr
 
@@ -65,8 +65,7 @@ config.xml as preferences:
  <li>NoS3Intercepts: true|false (default: false) If set true, any URL that includes "s3.amazonaws.com" will not be intercepted and handled by the plugin. Only valid if InterceptRemoteRequests is set to all, secureOnly or httpOnly.</li>
 </ul>
 
-### Known Issues
-The plugin caches cookies at the native layer between requests but it does not attempt to sync cookies between the WKWebView and the native sessions. From the JavaScript context, this means "document.cookie" won't contain any cookies returned from XHR handled at the native layer and the native iOS XHR will not see any cookies returned from remote resources fetched by the browser context, such as images.
+This plugin has been modified from the original to sync cookies returned in the XHR header to the WKWebView.
 
 Whilst this plugin resolves the main issues preventing the use of the Apache Cordova WKWebView plugin, there are other [known issues](https://issues.apache.org/jira/browse/CB-12074?jql=project%20%3D%20CB%20AND%20status%20%3D%20Open%20AND%20labels%20%3D%20wkwebview-known-issues) with that plugin.
 
