@@ -414,7 +414,7 @@ NS_ASSUME_NONNULL_BEGIN
                 [combinedHeaders addEntriesFromDictionary:headersWithCookies];
                 
                 // this returns the cookies and all header fields
-                dictionary[@"allHeaderFields"] = combinedHeaderss
+                dictionary[@"allHeaderFields"] = combinedHeaders;
 
                 dictionary[@"statusCode"] = @(urlResponse.statusCode);
                 dictionary[@"localizedStatusCode"] = [NSHTTPURLResponse localizedStringForStatusCode:urlResponse.statusCode];   
