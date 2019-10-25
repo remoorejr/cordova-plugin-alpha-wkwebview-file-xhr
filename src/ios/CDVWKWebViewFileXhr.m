@@ -406,10 +406,15 @@ NS_ASSUME_NONNULL_BEGIN
 
             if ([response isKindOfClass:NSHTTPURLResponse.class]) {
                 NSHTTPURLResponse* urlResponse = (NSHTTPURLResponse *) response;
-                // dictionary[@"allHeaderFields"] = headersWithCookies;
-
+                
                 //FOR TESTING with Instant Update
-                dictionary[@"allHeaderFields"] = urlResponse.allHeaderFields;
+                NSDictionary *originalHeaders = urlResponse.allHeaderFields;
+                NSMutableDictionary *combinedHeaders;
+                [combinedHeaders addEntriesFromDictionary:originalHeaders];
+                [combinedHeaders addEntriesFromDictionary:headersWithCookies];
+                
+                // this returns the cookies and all header fields
+                dictionary[@"allHeaderFields"] = combinedHeaderss
 
                 dictionary[@"statusCode"] = @(urlResponse.statusCode);
                 dictionary[@"localizedStatusCode"] = [NSHTTPURLResponse localizedStringForStatusCode:urlResponse.statusCode];   
