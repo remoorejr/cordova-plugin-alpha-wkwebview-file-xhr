@@ -406,7 +406,11 @@ NS_ASSUME_NONNULL_BEGIN
 
             if ([response isKindOfClass:NSHTTPURLResponse.class]) {
                 NSHTTPURLResponse* urlResponse = (NSHTTPURLResponse *) response;
-                dictionary[@"allHeaderFields"] = headersWithCookies;
+                // dictionary[@"allHeaderFields"] = headersWithCookies;
+
+                //FOR TESTING with Instant Update
+                dictionary[@"allHeaderFields"] = urlResponse.allHeaderFields;
+
                 dictionary[@"statusCode"] = @(urlResponse.statusCode);
                 dictionary[@"localizedStatusCode"] = [NSHTTPURLResponse localizedStringForStatusCode:urlResponse.statusCode];   
 
