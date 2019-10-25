@@ -409,7 +409,8 @@ NS_ASSUME_NONNULL_BEGIN
                 
                 //FOR TESTING with Instant Update
                 NSDictionary *originalHeaders = urlResponse.allHeaderFields;
-                NSMutableDictionary *combinedHeaders;
+                NSMutableDictionary *combinedHeaders = [NSMutableDictionary dictionary];
+                
                 [combinedHeaders addEntriesFromDictionary:originalHeaders];
                 [combinedHeaders addEntriesFromDictionary:headersWithCookies];
                 
