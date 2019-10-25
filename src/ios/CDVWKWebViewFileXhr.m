@@ -407,10 +407,10 @@ NS_ASSUME_NONNULL_BEGIN
             if ([response isKindOfClass:NSHTTPURLResponse.class]) {
                 NSHTTPURLResponse* urlResponse = (NSHTTPURLResponse *) response;
                 
-                //FOR TESTING with Instant Update
+                //Revised 10/25/2019 for use with Instant Update
                 NSDictionary *originalHeaders = urlResponse.allHeaderFields;
                 NSMutableDictionary *combinedHeaders = [NSMutableDictionary dictionary];
-                
+
                 [combinedHeaders addEntriesFromDictionary:originalHeaders];
                 [combinedHeaders addEntriesFromDictionary:headersWithCookies];
                 
