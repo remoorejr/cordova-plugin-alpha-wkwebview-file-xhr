@@ -25,13 +25,13 @@
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     id="cordova-plugin-alpha-wkwebview-file-xhr"
-    version="2.2.0">
+    version="2.2.1">
     <name>Cordova Alpha WKWebView File XHR Plugin</name>
     <description>This plugin includes the Alpha Cordova WKWebView plugin and resolves XHR Cross-Origin Resource Sharing (CORS) constraints.</description>
     <license>UPL 1.0</license> 
     <keywords>cordova,wkwebview</keywords>
     <repo>https://github.com/remoorejr/cordova-plugin-alpha-wkwebview-file-xhr.git</repo>
-    <dependency id="cordova-plugin-alpha-wkwebview-engine" url="https://github.com/remoorejr/cordova-plugin-alpha-wkwebview-engine" />
+    <dependency id="cordova-plugin-alpha-wkwebview-engine" url="https://github.com/remoorejr/cordova-plugin-alpha-wkwebview-engine.git#dev" />
     <engines>
       <engine name="cordova-ios" version=">=4.0.0" />
       <engine name="apple-ios" version=">=9.0" />

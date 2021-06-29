@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-alpha-wkwebview-file-xhr",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Cordova Alpha WKWebView File XHR Plugin",
   "cordova": {
     "id": "cordova-plugin-alpha-wkwebview-file-xhr",
